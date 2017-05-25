@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Udacity Multi User Blog</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+              integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link type="text/css" rel="stylesheet" href="/static/css/main.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <h1 class="col-md-6">
+                    <a href="/" class="no-decoration">
+                        Udacity Multi User Blog
+                    </a>
+                </h1>
+                <div class="col-md-6">
+                    <h3 class="text-right">
+                        {% if user %}
+                        <a href="/account">{{user.user_name}}</a> (<a href="/logout">Sign Out</a>)
+                        {% else %}
+                        <a class="login-link" href="/login">Login</a>
+                        |
+                        <a class="login-link" href="/register">Register</a>
+                        {% endif %}
+                    </h3>
+                </div>
+            </div>
+            <div class="row">
+                <h3 class="col-md-12">
+                    {% if user %}
+                    <a href="/newpost">Add Post</a>
+                    {% endif %}
+                </h3>
+            </div>
+            {% block content %}
+            {% endblock %}
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        {% block script %}
+        {% endblock %}
+    </body>
+</html>
